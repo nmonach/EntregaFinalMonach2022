@@ -1,0 +1,19 @@
+#logoMitica, .carrito {
+    width: 60px;
+    margin-right: 20px;
+}
+#logoMitica {
+    border-radius: 2rem;
+}
+nav{
+    border-radius: .7rem;
+}
+
+.navBarLinks{
+    margin-right: 10px;
+    margin-left: 10px;
+    text-decoration: none;
+    color:aqua;
+    margin-top: auto;
+    margin-bottom: auto;
+}
