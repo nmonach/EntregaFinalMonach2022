@@ -9,7 +9,7 @@ function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
       <Container>
-        <a href='/'><img id='logoMitica'src="../src/img/logoMitica.png" alt="vw" /></a>
+        <a href='/'><img id='logoMitica'src="./public/logoMitica.png" alt="vw" /></a>
         <Navbar.Brand to="/">Mitica Amapola</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
