@@ -13,12 +13,13 @@ const ItemCount = ({stock=5, initial=1, onAdd}) => { //aca el stock es el de por
     }
     const handleContadorResta = ()=>{
         if (count>initial){
-            setCount(count-1)
+            setCount(count - 1)
         }
     }
     const handleOnAdd = ()=>{
         onAdd(count)
     }
+    
     
     return (
         <div className='card'>

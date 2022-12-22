@@ -1,6 +1,10 @@
+//import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 const Item = ({product}) => {
+ // const { saludo }=useContext(AppContext)
+  //const obj = useContext(AppContext)
+  //console.log(obj);
   return (
           <div            
             style={{ marginLeft: 125, marginRight: 125 }}

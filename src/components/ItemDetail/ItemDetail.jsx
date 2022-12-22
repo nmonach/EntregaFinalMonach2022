@@ -1,10 +1,15 @@
+import { useCartContext } from '../../context/CartContext';
 import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css'
 const ItemDetail = ({products=[]}) => {
+
+    const {agregarCarrito}= useCartContext()
+
     const onAdd = (cant)=>{
         console.log('La cantidad seleccionada es: ', cant);
+        agregarCarrito({...products, cant})
     }
-    console.log(products)
+    console.log(agregarCarrito)
     return (
         <div className='container border border-3 border-primary rounded'>
             <div className='row'>

@@ -1,27 +1,48 @@
 import {useState, useEffect} from 'react'
 import './ItemListContainer.css'
-import gFetch from '../../components/helpers/gFetch'
+// import gFetch from '../../components/helpers/gFetch'
 import { useParams } from 'react-router-dom'
+import { collection, doc, getDoc, getDocs, getFirestore, limit, orderBy, query, where } from 'firebase/firestore'
 import ItemList from '../../components/ItemList/ItemList'
+import { async } from '@firebase/util'
+import Loading from '../../components/Loading/Loading'
 const ItemListContainer = ({saludo}) => { //{saludo = 'saludo por defecto'} esto iria dentro del parentesis
     
-    const [products, setProduct] = useState([])
+    const [products, setProducts] = useState([])
+
     const [loading, setLoading] = useState(true)
     const {id}= useParams()
     // console.log(id);
     useEffect(()=>{
+        
+        const db = getFirestore() 
+        const queryCollection = collection(db, 'productos')
+        
+        // getDocs(queryCollection) (trae todos los productos)
+        // .then(data=>setProducts(data.docs.map(product => ({id: product.id, ...product.data()}))))
+        // .catch(err=>console.log(err))
+        // .finally(()=>setLoading(false))
+
+        // const queryDoc = doc(db, 'productos', '8g4IIK151CyQJn9SCNyx')
+        // getDoc(queryDoc)
+        // .then(resp =>setProduct({id: resp.id, ...resp.data()}))
+        
         if (id){
-            gFetch()
-            .then(data => setProduct(data.filter(prod => prod.categoria === id)))
-            .catch(err => console.log(err))
-            .finally(()=> setLoading(false))
+            const queryFiltrada = query(queryCollection, where('categoria', '==', id))
+            getDocs(queryFiltrada)//trae todos los que apliquen al filtro (filtro por categorias o precio o cualquier parametro que le di)
+            .then(data=>setProducts(data.docs.map(product => ({id: product.id, ...product.data()}))))
+            .catch(err=>console.log(err))
+            .finally(()=>setLoading(false))
+                                                                                                
         } else {
-            gFetch()
-            .then(data => setProduct(data))
-            .catch(err => console.log(err))
-            .finally(()=> setLoading(false))
+            getDocs(queryCollection)
+            .then(data=>setProducts(data.docs.map(product => ({id: product.id, ...product.data()}))))
+            .catch(err=>console.log(err))
+            .finally(()=>setLoading(false))
         }
     }, [id])
+    
+    
     // useEffect(()=>{
     //     gFetch()// consulta a un api pero solo simulación 
     //     // .then( respuesta => respuesta )
@@ -87,11 +108,25 @@ const ItemListContainer = ({saludo}) => { //{saludo = 'saludo por defecto'} esto
     
 
     //LOS EVENTOS, CAMBIOS DE ESTADO Y CAMBIOS DE PROPS PRODUCEN RE-RENDER
+    // const handleInput = TERMINAR, REVEER CLASE 11
+    // console.log('name del input', evt.target.name);
+    // console.log('el contenido del input', evt.target.value);
+
+    // const Loading = ()=>{
+    //     useEffect(()=>{
+    //         return ()=>{
+    //             console.log('dismounting')
+    //         }
+            
+    //     }) 
+    // return (
+    //     <h2>Cargando...</h2>
+    //     ) 
+    // }
     return (
         
     <section>
         {/* <h1>ItemListContainer</h1> */}
-        
         {/* <p className='alert alert-danger'>{count}</p>
         <button className='btn btn-outline-primary' onClick={handleContadorSuma}>+</button>
         <button className='btn btn-danger' onClick={handleContadorResta}>-</button>
@@ -103,9 +138,20 @@ const ItemListContainer = ({saludo}) => { //{saludo = 'saludo por defecto'} esto
         <button onClick={handleContadorSuma}>+</button> */}
         <h1 id='greeting'>{saludo}</h1>
         {   loading ? 
-                    <h3>Loading...</h3> 
-                :
+                    <Loading/> 
+                    :
+                    <div 
+                        style={
+                            {display: 'flex',
+                            flexDirection: 'row',
+                            flexWrap: 'wrap'}
+                        }>
                     <ItemList products={products} saludo={saludo}/> 
+                    {/* <input type="text" name='nombre' placeholder='ing su nombre'
+                    onKeyDown={handleInput}/>
+                    <input type="text" name='email' placeholder='ing su email'/> */}
+
+                    </div>
         }
 
     </section>
