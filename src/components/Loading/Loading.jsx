@@ -3,7 +3,7 @@ import { useEffect } from "react"
 const Loading = ()=>{
     useEffect(()=>{
         return ()=>{
-            console.log('dismounting')
+            
         }
         
     }) 

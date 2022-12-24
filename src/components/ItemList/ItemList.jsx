@@ -1,7 +1,5 @@
-// import { useContext } from "react"
 import Item from "../Item/Item"
-//const {products} = useContext(AppContext)
-const ItemList = ({products = []}, {saludo=''}) => {
+const ItemList = ({products = []}) => {
     return (
             <section> 
                 {products.map( (product) => ( 

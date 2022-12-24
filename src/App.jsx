@@ -29,15 +29,11 @@ function App() {
           <NavBar />
           <Routes>
             <Route path='/' element={<ItemListContainer saludo={saludo} />}/>
-            <Route path='/categoria/:id' element={<ItemListContainer />}/>
+            <Route path='/category/:id' element={<ItemListContainer />}/>
             <Route path='/detail/:productId' element={<ItemDetailContainer />}/>
             <Route path='/cart' element={<CartContainer />}/>
             <Route path='*' element={<Navigate to='/'/>}/>
           </Routes>
-          {/* <CarouselInicio/>         */}
-          {/* <ViewPort/> */}
-          {/* <ItemCount/> */}
-          {/* <ItemDetailContainer /> */}
       </BrowserRouter>
     </CartContextProvider>   
   )
