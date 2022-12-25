@@ -8,17 +8,16 @@
 nav{
     border-radius: .7rem;
 }
-
 .navBarLinks{
     margin-right: 10px;
     margin-left: 10px;
     text-decoration: none;
-    color:aqua;
+    color: rgb(255, 255, 255);
     margin-top: auto;
     margin-bottom: auto;
+    justify-items: right;
+    justify-content: right;
 }
-i{
-    color: azure;
-    justify-content:right;
+.navbar-collapse{
+    flex-grow: 0;
 }
-
