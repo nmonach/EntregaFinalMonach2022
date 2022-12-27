@@ -1,9 +1,7 @@
 #h3Carousel, #pCarousel {
     background-color: transparent;
-    margin-left: 410px;
-    margin-top: 50px;
-    margin-bottom: 40px;
-    width: 300px;
+    width: 250px;
+    margin-bottom: 0px;
 }
 .carousel-caption, .carousel-indicators{
     background-color: transparent;

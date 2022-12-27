@@ -25,7 +25,9 @@ function App() {
     <CartContextProvider >
       <BrowserRouter>
           <NavBar />
+          <br />
           <CarouselInicio />
+          <br />
           <Routes>
             <Route path='/' element={<ItemListContainer saludo={saludo} />}/>
             <Route path='/category/:id' element={<ItemListContainer />}/>
