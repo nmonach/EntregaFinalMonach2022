@@ -23,7 +23,6 @@ export const CartContextProvider = ({children})=>{
     //vaciar el carrito
     const vaciarCarrito=()=>{
         setCartList([])
-
     }
 
     // precio total

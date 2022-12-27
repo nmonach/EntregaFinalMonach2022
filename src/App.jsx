@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import CartContainer from './containers/CartContainer/CartContainer';
 import ItemDetailContainer from './containers/ItemDeatilContainer/ItemDetailContainer';
 import { CartContextProvider } from './context/CartContext';
-import CarouselInicio from './components/Carousel/Carousel';
+import Form from './components/Form/Form';
 
 /// __________ Contexto nuevo __________ ///
 
@@ -15,24 +15,18 @@ import CarouselInicio from './components/Carousel/Carousel';
 /// __________ Contexto nuevo __________ ///
 
 function App() {
-  //const [products, setProducts] = useState{productos}
   let saludo = 'Bienvenidos a Mitica Amapola'
-  // function saludo() {
-  //   console.log("sola soy bla bla bla");
-  // }
-  // console.log(AppContext);
   return (
     <CartContextProvider >
       <BrowserRouter>
           <NavBar />
-          <br />
-          <CarouselInicio />
           <br />
           <Routes>
             <Route path='/' element={<ItemListContainer saludo={saludo} />}/>
             <Route path='/category/:id' element={<ItemListContainer />}/>
             <Route path='/detail/:productId' element={<ItemDetailContainer />}/>
             <Route path='/cart' element={<CartContainer />}/>
+            <Route path='/form' element={<Form/>}/>
             <Route path='*' element={<Navigate to='/'/>}/>
           </Routes>
       </BrowserRouter>

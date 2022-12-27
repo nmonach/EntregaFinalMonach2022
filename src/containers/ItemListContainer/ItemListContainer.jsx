@@ -5,11 +5,12 @@ import { collection, getDocs, getFirestore, orderBy, query, where } from 'fireba
 import ItemList from '../../components/ItemList/ItemList'
 import Loading from '../../components/Loading/Loading'
 import Greeting from '../../components/Greeting/Greeting'
+import CarouselInicio from '../../components/Carousel/Carousel'
 const ItemListContainer = ({saludo}) => { 
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const {id}= useParams()
-    
+
     useEffect(()=>{
         
         const db = getFirestore() 
@@ -38,6 +39,7 @@ const ItemListContainer = ({saludo}) => {
                     <Loading/> 
                 :
                 <div>
+                    <CarouselInicio/>
                     <Greeting saludo={saludo}/>
                     <ItemList products={products} /> 
                 </div>

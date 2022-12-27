@@ -18,10 +18,11 @@ const CartContainer = () => {
                                 </div>
                               </div> )
       }
-                            <div className="card-footer">
-                              <h4>Su compra es: ${precioTotal()} </h4>
-                              <button className="btn btn-danger" onClick={vaciarCarrito}>Vaciar Carrito</button>
-                            </div>
+                              <div className="card-footer">
+                                <h4>Su compra es: ${precioTotal()} </h4>
+                                <button className="btn btn-danger" onClick={vaciarCarrito}>Vaciar Carrito</button>
+                                <button className="btn btn-success btnContBuy"><Link to='/form'>Continuar Compra</Link></button>
+                              </div>
       </>
       : 
       <>
