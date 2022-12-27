@@ -11,8 +11,8 @@ function CarouselInicio() {
           alt="difusor1"
         />
         <Carousel.Caption>
-          <h3>Difusores</h3>
-          <p>Vainilla, Caramelo y Mas!</p>
+          <h3 id='h3Carousel'>Difusores</h3>
+          <p id='pCarousel'>Vainilla, Caramelo y Mas!</p>
         </Carousel.Caption>
       </Carousel.Item>
 
@@ -23,8 +23,8 @@ function CarouselInicio() {
           alt="lampara1"
         />
         <Carousel.Caption>
-          <h3>Lamparas de Sal</h3>
-          <p>Varios Tamaños!</p>
+          <h3 id='h3Carousel'>Lamparas de Sal</h3>
+          <p id='pCarousel'>Varios Tamaños!</p>
         </Carousel.Caption>
       </Carousel.Item>
 
@@ -36,8 +36,8 @@ function CarouselInicio() {
         />
 
         <Carousel.Caption>
-          <h3>Velas de Soja</h3>
-          <p>Varios Modelos y Aromas!</p>
+          <h3 id='h3Carousel'>Velas de Soja</h3>
+          <p id='pCarousel'>Varios Modelos y Aromas!</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
