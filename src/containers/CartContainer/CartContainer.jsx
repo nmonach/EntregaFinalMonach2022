@@ -5,7 +5,7 @@ const CartContainer = () => {
   const {cartList, vaciarCarrito, precioTotal, deleteItem} = useCartContext()
   console.log(cartList)
   return (
-    <div id="card" className="card">
+    <div id="card" className="card cardCartContainer">
       { cartList.length !==0 ? 
       <>
         {cartList.map(prod=>  <div key={prod.id}>
@@ -13,7 +13,7 @@ const CartContainer = () => {
                                   <img src={prod.img} alt="" className="w-25"/>
                                 </div>
                                 <div className="card-body">
-                                  Nombre: {prod.model} - Categoria: {prod.category} - Precio: {prod.price} - Cantidad: {prod.cant} 
+                                  Nombre: {prod.model} - Categoria: {prod.category} - Precio: ${prod.price} - Cantidad: {prod.cant} 
                                   <button className="btn btn-danger" onClick={()=>deleteItem(prod.id)}>X</button>
                                 </div>
                               </div> )

@@ -1,6 +1,19 @@
 h3, p {
     background-color: transparent;
+    margin-left: 320px;
+    width: 500px;
 }
 .carousel-caption, .carousel-indicators{
     background-color: transparent;
+}
+.imgCarousel{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: .5rem;
+}
+
+.carousel-item{
+    background-color: #444;
+    opacity: 70%;
+    border-radius: .5rem;
 }

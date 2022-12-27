@@ -1,17 +1,13 @@
-//import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './Item.css'
 
 const Item = ({product}) => {
- // const { saludo }=useContext(AppContext)
-  //const obj = useContext(AppContext)
-  //console.log(obj);
   return (
     <section            
       className='wrapper'
       key={product.id}
     >
-      <div className="card" >
+      <div className="card cardItem" >
         <div className="card-header">
           <h3>{`${product.model}`}</h3>
           <h4>{`${product.category}`}</h4>

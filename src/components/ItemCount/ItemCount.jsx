@@ -21,15 +21,15 @@ const ItemCount = ({stock=5, initial=1, onAdd}) => { //aca el stock es el de por
     
     
     return (
-        <div className='card'>
-            <div className='card-header'>
+        <div className='card cardItemCount'>
+            <div className='card-header cardHeaderItemCount'>
                 <label htmlFor="">Seleccione la cantidad: {count}</label>
             </div>
-            <div className='card-body'>
+            <div className='card-body cardBodyItemCount'>
                 <button id='mas' className='btn btn-outline-danger'  onClick={handleContadorResta}> - </button>
                 <button id='menos' className='btn btn-outline-primary' onClick={handleContadorSuma}> + </button>
             </div>
-            <div className='card-footer'>
+            <div className='card-footer cardFooterItemCount'>
                 <button className='btn btn-outline-success btn-block' onClick={handleOnAdd}>Agregar al Carrito</button>
             </div>
         </div>

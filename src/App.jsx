@@ -2,13 +2,11 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './containers/ItemListContainer/ItemListContainer';
-//import ItemCount from './components/ItemCount/ItemCount';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import CartContainer from './containers/CartContainer/CartContainer';
 import ItemDetailContainer from './containers/ItemDeatilContainer/ItemDetailContainer';
-//import { ViewPort } from './components/ViewPort/ViewPort';
-//import { createContext, useState } from 'react';
 import { CartContextProvider } from './context/CartContext';
+import CarouselInicio from './components/Carousel/Carousel';
 
 /// __________ Contexto nuevo __________ ///
 
@@ -27,6 +25,7 @@ function App() {
     <CartContextProvider >
       <BrowserRouter>
           <NavBar />
+          <CarouselInicio />
           <Routes>
             <Route path='/' element={<ItemListContainer saludo={saludo} />}/>
             <Route path='/category/:id' element={<ItemListContainer />}/>

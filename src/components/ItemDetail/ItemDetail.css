@@ -3,3 +3,16 @@
     height: 250px;
     border-radius: .5rem;
 }
+
+
+.colItemDetail, .cardItemDetail{
+    padding: 0;
+    margin: 5px;
+    width: fit-content;
+    min-width: 330px;
+    max-width: 330px;
+}
+
+.cardItemDetailHeader, .cardItemDetailBody, .cardItemDetailFooter, .colItemDetailBody{
+    padding: 10px;
+}

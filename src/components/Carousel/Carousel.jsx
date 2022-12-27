@@ -6,38 +6,38 @@ function CarouselInicio() {
     <Carousel>
       <Carousel.Item>
         <img
-          className="d-block w-100"
-          src="../src/img/poloMSI.webp"
-          alt="Polo"
+          className="d-block w-25 imgCarousel"
+          src="difusor1.jpg"
+          alt="difusor1"
         />
         <Carousel.Caption>
-          <h3>Polo</h3>
-          <p>Nuevo Modelo</p>
+          <h3>Difusores</h3>
+          <p>Vainilla, Caramelo y Mas!</p>
         </Carousel.Caption>
       </Carousel.Item>
 
       <Carousel.Item>
         <img
-          className="d-block w-100"
-          src="../src/img/virtusMSI.webp"
-          alt="Virtus"
+          className="d-block w-25 imgCarousel"
+          src="lampara1.jpg"
+          alt="lampara1"
         />
         <Carousel.Caption>
-          <h3>Virtus</h3>
-          <p>Nuevo Modelo</p>
+          <h3>Lamparas de Sal</h3>
+          <p>Varios Tamaños!</p>
         </Carousel.Caption>
       </Carousel.Item>
 
       <Carousel.Item>
         <img
-          className="d-block w-100"
-          src="../src/img/amarokV6.webp"
-          alt="Amarok"
+          className="d-block w-25 imgCarousel"
+          src="vela1.jpg"
+          alt="vela1"
         />
 
         <Carousel.Caption>
-          <h3>Amarok</h3>
-          <p>Nuevo Modelo</p>
+          <h3>Velas de Soja</h3>
+          <p>Varios Modelos y Aromas!</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

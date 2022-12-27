@@ -15,29 +15,30 @@ const ItemDetail = ({products=[]}) => {
     }
     console.log(agregarCarrito)
     return (
-        <div className='container border border-3 border-primary rounded'>
+        <div className='container'>
             <div className='row'>
-                <div className='card'>
-                    <div className='card-header'>
+                <div className='card cardItemDetail'>
+                    <div className='card-header cardItemDetailHeader'>
                         <img className='imgItemDetail' src={products.img} />
                     </div>
-                    <div className='card-body'>
+                    <div className='card-body cardItemDetailBody'>
                         <h4>Nombre: {products.model}</h4>
                         <h4>Categoria: {products.category}</h4>
                     </div>
-                    <div className='card-footer'>
+                    <div className='card-footer cardItemDetailFooter'>
                         <h4>Precio: ${products.price}</h4>
                         <h5>Stock: {products.stock}</h5>
                         <a href="/"><button className='btn btn-outline-warning'>Volver a Inicio</button></a>
                     </div>   
                 </div>
-                <div className='col'>
+                <div className='col colItemDetail'>
                     {isCant?
                     
-                        <div className='card card-body'>
+                        <div className='card card-body colItemDetailBody'>
                             <Link to='/cart'>
                                 <button className='btn btn-outline-success'>Ir al Carrito</button>
                             </Link>
+                            <hr/>
                             <Link to='/'>
                                 <button className='btn btn-outline-primary'>Seguir Comprando</button>
                             </Link>
