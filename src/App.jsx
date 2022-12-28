@@ -27,6 +27,7 @@ function App() {
             <Route path='/detail/:productId' element={<ItemDetailContainer />}/>
             <Route path='/cart' element={<CartContainer />}/>
             <Route path='/form' element={<Form/>}/>
+            {/* <Route path='/ordernumber' element={<OrderNumber/>}/> */}
             <Route path='*' element={<Navigate to='/'/>}/>
           </Routes>
       </BrowserRouter>

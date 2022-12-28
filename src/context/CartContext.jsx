@@ -1,3 +1,4 @@
+import { addDoc, collection, getFirestore } from "firebase/firestore"
 import { useContext, useState, createContext } from "react"
 export const CartContext = createContext([])
 export const useCartContext = ()=> useContext(CartContext)
@@ -39,6 +40,39 @@ export const CartContextProvider = ({children})=>{
         setCartList(cartList.filter(prod=> prod.id !== id))
     }
 
+    const addOrder = (e)=>{
+        e.preventDefault()
+        //armar formulario
+        const order = {}
+        order.buyer = dataForm
+        order.price = precioTotal()
+        order.items = cartList.map(({id, price, model, cant}) => ({id, price, model, cant}))
+        // console.log(order)
+        const db = getFirestore()
+        const queryCollection = collection(db, 'orders')
+        addDoc(queryCollection, order)
+        .then(resp => console.log(resp))
+        .catch(err => console.log(err))
+        .finally(()=>vaciarCarrito())
+    }
+    const [dataForm, setDataForm]= useState({
+        name: '',
+        lastname: '',
+        phone: '',
+        document: '',
+        email: '',
+        email2: ''
+      })
+    const handleOnChange = (e)=>{
+        console.log('nombre del input: ',(e.target.name))
+        console.log('valor del input: ',(e.target.value))
+        setDataForm({
+            ...dataForm,
+            [e.target.name]: e.target.value
+        })
+      }
+      console.log(dataForm);
+
     return (
         <CartContext.Provider value={{
             cartList,
@@ -47,6 +81,11 @@ export const CartContextProvider = ({children})=>{
             precioTotal,
             cantidadTotal,
             deleteItem,
+            addOrder,
+            handleOnChange,
+            dataForm,
+
+
             
 
             

@@ -17,12 +17,12 @@ const ItemListContainer = ({saludo}) => {
         const queryCollection = collection(db, 'productos')
         
         if (id){
-            const queryFilter = query(queryCollection, where('category', '==', id), orderBy('price', 'asc'))
+            const queryFilter = query(queryCollection, where('category', '==', id), orderBy('price', 'asc'), where('isActive', '==', true))
             getDocs(queryFilter)//trae todos los que apliquen al filtro (filtro por categorias o precio o cualquier parametro que le di)
             .then(data=>setProducts(data.docs.map(product => ({id: product.id, ...product.data()}))))
             .catch(err=>console.log(err))
             .finally(()=>setLoading(false))
-                                                                                                
+            //isActive es un borrador logico                                                                                    
         } else {
             getDocs(queryCollection)
             .then(data=>setProducts(data.docs.map(product => ({id: product.id, ...product.data()}))))

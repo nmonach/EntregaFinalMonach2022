@@ -1,23 +1,55 @@
+import { Link } from 'react-router-dom'
+import { useCartContext } from '../../context/CartContext'
 import './Form.css'
-import React from 'react'
-
+//validar el formulario (que no esten vacios, validar el mail)
 const Form = () => {
+  const {addOrder, handleOnChange, dataForm} = useCartContext()
   return (
     <div className='card'>
         <div>
             <h3>Complete sus datos para continuar con la compra!</h3>    
         </div>
         <hr />
-        <div className='row'>
-            <input type="text" placeholder='Ingrese su Nombre' required />
-            <input type="text" placeholder='Ingrese su Apellido' required/>
-            <input type="number" placeholder='Ingrese su Telefono' required/>
-            <input type="number" placeholder='Ingrese su Documento' required/>
-            <input type="email" placeholder='Ingrese su E-mail' required/>
-            <input type="email" placeholder='Reingrese su E-mail' required/>
-        </div>
+        <form>
+            <input type="text" 
+              onChange={handleOnChange} 
+              name='name' 
+              placeholder='Ingrese su Nombre'
+              value={dataForm.name}
+            />
+            <input type="text" 
+              onChange={handleOnChange} 
+              name='lastname' 
+              placeholder='Ingrese su Apellido' 
+              value={dataForm.lastname}
+            />
+            <input type="number" 
+              onChange={handleOnChange} 
+              name='phone' 
+              placeholder='Ingrese su Telefono' 
+              value={dataForm.phone}
+            />
+            <input type="number" 
+              onChange={handleOnChange} 
+              name='document' 
+              placeholder='Ingrese su Documento' 
+              value={dataForm.document}
+            />
+            <input type="email" 
+              onChange={handleOnChange} 
+              name='email' 
+              placeholder='Ingrese su E-mail' 
+              value={dataForm.email}
+            />
+            <input type="email" 
+              onChange={handleOnChange} 
+              name='email2' 
+              placeholder='Reingrese su E-mail' 
+              value={dataForm.email2}
+            />
+        </form>
         <div>
-            <button className='btn btn-success'>Comprar</button>
+            <button className='btn btn-success' onClick={addOrder}><Link to='/ordernumber'>Comprar</Link></button>
         </div>
         
         
