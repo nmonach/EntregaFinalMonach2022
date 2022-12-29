@@ -1,7 +1,6 @@
 import { doc, getDoc, getFirestore } from 'firebase/firestore'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-//import gFetch from '../../components/helpers/gFetch'
 import ItemDetail from '../../components/ItemDetail/ItemDetail'
 import Loading from '../../components/Loading/Loading'
 
@@ -20,6 +19,7 @@ const ItemDetailContainer = () => {
       .finally(()=> setLoading(false))
     },[productId])
     console.log(productId);
+    console.log(products);
     
     
   return (

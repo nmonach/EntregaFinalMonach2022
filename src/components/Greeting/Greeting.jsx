@@ -1,6 +1,6 @@
-const Greeting = ({saludo}) => {
+const Greeting = ({greeting}) => {
   return (
-    <h1 id='greeting'>{saludo}</h1>
+    <h1 id='greeting'>{greeting}</h1>
   )
 }
 

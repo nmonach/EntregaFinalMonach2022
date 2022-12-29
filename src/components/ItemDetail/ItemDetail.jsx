@@ -5,15 +5,14 @@ import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css'
 const ItemDetail = ({products=[]}) => {
     const [isCant, setIsCant] = useState(false)
-    const {agregarCarrito}= useCartContext()
+    const {addToCart}= useCartContext()
 
     const onAdd = (cant)=>{
         console.log('La cantidad seleccionada es: ', cant);
-        agregarCarrito({...products, cant})    
+        addToCart({...products, cant})    
         setIsCant(true)
-
     }
-    console.log(agregarCarrito)
+    //console.log(addToCart)
     return (
         <div className='container'>
             <div className='row'>

@@ -8,7 +8,7 @@
 nav{
     border-radius: .7rem;
 }
-.navBarLinks{
+.navBarLinks { 
     margin-right: 10px;
     margin-left: 10px;
     text-decoration: none;
@@ -18,6 +18,6 @@ nav{
     justify-items: right;
     justify-content: right;
 }
-.navbar-collapse{
+.navbar-collapse {
     flex-grow: 0;
 }

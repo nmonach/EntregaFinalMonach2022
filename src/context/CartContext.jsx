@@ -1,4 +1,4 @@
-import { addDoc, collection, getFirestore } from "firebase/firestore"
+import { addDoc, collection, doc, getDoc, getFirestore } from "firebase/firestore"
 import { useContext, useState, createContext } from "react"
 export const CartContext = createContext([])
 export const useCartContext = ()=> useContext(CartContext)
@@ -8,7 +8,7 @@ export const CartContextProvider = ({children})=>{
     //modificar el cartList
     
 
-    const agregarCarrito=(products)=>{
+    const addToCart=(products)=>{
         //si esta en el carrito
         const idx = cartList.findIndex(prod => prod.id === products.id) // si no esta devuelve un -1
         
@@ -22,17 +22,17 @@ export const CartContextProvider = ({children})=>{
     }
 
     //vaciar el carrito
-    const vaciarCarrito=()=>{
+    const cleanCart=()=>{
         setCartList([])
     }
 
     // precio total
 
-    const precioTotal = ()=> cartList.reduce((contador, producto)=> contador += (producto.price * producto.cant), 0)
+    const totalPrice = ()=> cartList.reduce((contador, producto)=> contador += (producto.price * producto.cant), 0)
 
     // cantidad total
 
-    const cantidadTotal = ()=> cartList.reduce((contador, producto)=> contador += producto.cant, 0)
+    const totalProducts = ()=> cartList.reduce((contador, producto)=> contador += producto.cant, 0)
 
     // eliminar por item
 
@@ -40,21 +40,27 @@ export const CartContextProvider = ({children})=>{
         setCartList(cartList.filter(prod=> prod.id !== id))
     }
 
+    function showOrder(resp){
+        console.log(resp);
+    }
+
     const addOrder = (e)=>{
         e.preventDefault()
         //armar formulario
         const order = {}
         order.buyer = dataForm
-        order.price = precioTotal()
+        order.price = totalPrice()
         order.items = cartList.map(({id, price, model, cant}) => ({id, price, model, cant}))
-        // console.log(order)
+        //console.log(order)
         const db = getFirestore()
         const queryCollection = collection(db, 'orders')
         addDoc(queryCollection, order)
-        .then(resp => console.log(resp))
+        .then(resp => console.log(resp.id) && showOrder(resp.id))
         .catch(err => console.log(err))
-        .finally(()=>vaciarCarrito())
+        .finally(()=>cleanCart())
+        
     }
+    
     const [dataForm, setDataForm]= useState({
         name: '',
         lastname: '',
@@ -63,6 +69,8 @@ export const CartContextProvider = ({children})=>{
         email: '',
         email2: ''
       })
+          
+    
     const handleOnChange = (e)=>{
         console.log('nombre del input: ',(e.target.name))
         console.log('valor del input: ',(e.target.value))
@@ -71,29 +79,33 @@ export const CartContextProvider = ({children})=>{
             [e.target.name]: e.target.value
         })
       }
-      console.log(dataForm);
-
+    
+    // const allProducts =()=>{
+    //     const [products, setProducts] = useState([])
+    //     const {productId} = useParams()
+    //         useEffect(()=>{
+    //         const db = getFirestore()
+    //         const queryDoc = doc(db, 'productos', productId)
+    //         getDoc(queryDoc)
+    //         .then(resp => setProducts({id:resp.id, ...resp.data()}))
+    //         .catch(err=>console.log(err))
+    //         },[productId])}
     return (
         <CartContext.Provider value={{
             cartList,
-            agregarCarrito,
-            vaciarCarrito,
-            precioTotal,
-            cantidadTotal,
+            addToCart,
+            cleanCart,
+            totalPrice,
+            totalProducts,
             deleteItem,
             addOrder,
             handleOnChange,
             dataForm,
-
-
-            
-
-            
-            
+            showOrder,
+            // allProducts,
+            // products
         }}>
-
             {children}
         </CartContext.Provider>
-
     )
 } 

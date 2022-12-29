@@ -7,6 +7,7 @@ import CartContainer from './containers/CartContainer/CartContainer';
 import ItemDetailContainer from './containers/ItemDeatilContainer/ItemDetailContainer';
 import { CartContextProvider } from './context/CartContext';
 import Form from './components/Form/Form';
+import OrderNumber from './components/OrderNumber/OrderNumber';
 
 /// __________ Contexto nuevo __________ ///
 
@@ -15,14 +16,14 @@ import Form from './components/Form/Form';
 /// __________ Contexto nuevo __________ ///
 
 function App() {
-  let saludo = 'Bienvenidos a Mitica Amapola'
+  let greeting = 'Bienvenidos a Mitica Amapola'
   return (
     <CartContextProvider >
       <BrowserRouter>
           <NavBar />
           <br />
           <Routes>
-            <Route path='/' element={<ItemListContainer saludo={saludo} />}/>
+            <Route path='/' element={<ItemListContainer greeting={greeting} />}/>
             <Route path='/category/:id' element={<ItemListContainer />}/>
             <Route path='/detail/:productId' element={<ItemDetailContainer />}/>
             <Route path='/cart' element={<CartContainer />}/>

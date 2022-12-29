@@ -6,7 +6,7 @@ import ItemList from '../../components/ItemList/ItemList'
 import Loading from '../../components/Loading/Loading'
 import Greeting from '../../components/Greeting/Greeting'
 import CarouselInicio from '../../components/Carousel/Carousel'
-const ItemListContainer = ({saludo}) => { 
+const ItemListContainer = ({greeting}) => { 
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const {id}= useParams()
@@ -15,20 +15,13 @@ const ItemListContainer = ({saludo}) => {
         
         const db = getFirestore() 
         const queryCollection = collection(db, 'productos')
+        const queryFilter = id ? query(queryCollection, where('category', '==', id), orderBy('price', 'asc'), where('isActive', '==', true)) : queryCollection
+
+        getDocs(queryFilter)//trae todos los que apliquen al filtro (filtro por categorias o precio o cualquier parametro que le di)
+        .then(data=>setProducts(data.docs.map(product => ({id: product.id, ...product.data()}))))
+        .catch(err=>console.log(err))
+        .finally(()=>setLoading(false))//isActive es un borrador logico
         
-        if (id){
-            const queryFilter = query(queryCollection, where('category', '==', id), orderBy('price', 'asc'), where('isActive', '==', true))
-            getDocs(queryFilter)//trae todos los que apliquen al filtro (filtro por categorias o precio o cualquier parametro que le di)
-            .then(data=>setProducts(data.docs.map(product => ({id: product.id, ...product.data()}))))
-            .catch(err=>console.log(err))
-            .finally(()=>setLoading(false))
-            //isActive es un borrador logico                                                                                    
-        } else {
-            getDocs(queryCollection)
-            .then(data=>setProducts(data.docs.map(product => ({id: product.id, ...product.data()}))))
-            .catch(err=>console.log(err))
-            .finally(()=>setLoading(false))
-        }
     }, [id])
     
     return (
@@ -40,7 +33,7 @@ const ItemListContainer = ({saludo}) => {
                 :
                 <div>
                     <CarouselInicio/>
-                    <Greeting saludo={saludo}/>
+                    <Greeting greeting={greeting}/>
                     <ItemList products={products} /> 
                 </div>
         }
@@ -50,3 +43,5 @@ const ItemListContainer = ({saludo}) => {
 }
 
 export default ItemListContainer
+
+//codigo comentado
