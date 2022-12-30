@@ -19,7 +19,6 @@ const ItemCount = ({stock=5, initial=1, onAdd}) => { //aca el stock es el de por
         onAdd(count)
     }
     
-    
     return (
         <div className='card cardItemCount'>
             <div className='card-header cardHeaderItemCount'>
@@ -34,9 +33,6 @@ const ItemCount = ({stock=5, initial=1, onAdd}) => { //aca el stock es el de por
             </div>
         </div>
     )
-  
-    
-  
 }
 
 export default ItemCount

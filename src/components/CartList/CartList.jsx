@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
-import './CartList.css'
 const CartList = () => {
-    const {cartList, totalPrice, cleanCart, addOrder, deleteItem} = useCartContext()
+    const {cartList, totalPrice, cleanCart, deleteItem} = useCartContext()
 
   return (
     <div id="card" className="card cardCartContainer">

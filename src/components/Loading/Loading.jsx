@@ -2,12 +2,9 @@ import { useEffect } from "react"
 
 const Loading = ()=>{
     useEffect(()=>{
-        return ()=>{
-            
-        }
-        
+        return ()=>{}
     }) 
-return (
+    return (
     <h2>Cargando...</h2>
     ) 
 }

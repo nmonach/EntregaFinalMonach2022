@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react'
-import './ItemListContainer.css'
 import { useParams } from 'react-router-dom'
 import { collection, getDocs, getFirestore, orderBy, query, where } from 'firebase/firestore'
 import ItemList from '../../components/ItemList/ItemList'
@@ -43,5 +42,3 @@ const ItemListContainer = ({greeting}) => {
 }
 
 export default ItemListContainer
-
-//codigo comentado

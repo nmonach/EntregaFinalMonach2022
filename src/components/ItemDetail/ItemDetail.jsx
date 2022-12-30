@@ -8,11 +8,9 @@ const ItemDetail = ({products=[]}) => {
     const {addToCart}= useCartContext()
 
     const onAdd = (cant)=>{
-        console.log('La cantidad seleccionada es: ', cant);
         addToCart({...products, cant})    
         setIsCant(true)
     }
-    //console.log(addToCart)
     return (
         <div className='container'>
             <div className='row'>
@@ -31,8 +29,8 @@ const ItemDetail = ({products=[]}) => {
                     </div>   
                 </div>
                 <div className='col colItemDetail'>
-                    {isCant?
-                    
+                    {isCant
+                        ?
                         <div className='card card-body colItemDetailBody'>
                             <Link to='/cart'>
                                 <button className='btn btn-outline-success'>Ir al Carrito</button>
@@ -42,15 +40,12 @@ const ItemDetail = ({products=[]}) => {
                                 <button className='btn btn-outline-primary'>Seguir Comprando</button>
                             </Link>
                         </div>
-                :   
-                
-                
-
-                    <ItemCount 
-                        stock={products.stock} //aca se define el stock que yo digo
-                        initial={1} 
-                        onAdd={onAdd}
-                    />} 
+                        :   
+                        <ItemCount 
+                            stock={products.stock} //aca se define el stock que yo digo
+                            initial={1} 
+                            onAdd={onAdd}
+                        />} 
                 </div>
             </div>
         </div>

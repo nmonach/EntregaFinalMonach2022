@@ -8,7 +8,6 @@ const ItemDetailContainer = () => {
     const [products, setProduct] = useState([])
     const {productId} = useParams()
     const [loading, setLoading]=useState(true)
-    
 
     useEffect(()=>{
       const db = getFirestore()
@@ -18,9 +17,6 @@ const ItemDetailContainer = () => {
       .catch(err=>console.log(err))
       .finally(()=> setLoading(false))
     },[productId])
-    console.log(productId);
-    console.log(products);
-    
     
   return (
     <>

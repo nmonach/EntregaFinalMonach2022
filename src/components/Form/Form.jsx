@@ -1,8 +1,4 @@
-import { Link } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
-import OrderNumber from '../OrderNumber/OrderNumber'
-import './Form.css'
-//validar el formulario (que no esten vacios, validar el mail) mostrar el id de la compra en <OrderNumber/>
 const Form = () => {
   const {addOrder, handleOnChange, dataForm} = useCartContext()
   return (
@@ -19,26 +15,11 @@ const Form = () => {
               value={dataForm.name}
               required
             />
-            <input type="text" 
-              onChange={handleOnChange} 
-              name='lastname' 
-              placeholder='Ingrese su Apellido' 
-              value={dataForm.lastname}
-              required
-            />
-            <br />
             <input type="number" 
               onChange={handleOnChange} 
               name='phone' 
               placeholder='Ingrese su Telefono' 
               value={dataForm.phone}
-              required
-            />
-            <input type="number" 
-              onChange={handleOnChange} 
-              name='document' 
-              placeholder='Ingrese su Documento' 
-              value={dataForm.document}
               required
             />
             <br />
@@ -57,9 +38,18 @@ const Form = () => {
               required
             />
             <br /><br />
-            <Link to='/ordernumber'/><button type="submit" className='btn btn-success'onClick={addOrder}>Comprar</button><Link/>
+            {
+              dataForm.name == "" || 
+              dataForm.phone == "" || 
+              dataForm.email == "" ||
+              dataForm.email2 == "" ||
+              dataForm.email !== dataForm.email2
+            ?
+              <input type="submit" value="Complete los datos para Continuar" className='btn btn-warning' disabled/>
+            :
+              <input type="button" value="Comprar" className='btn btn-success' onClick={addOrder}/>
+            }
         </form>
-        <OrderNumber/>
     </div>
   )
 }
