@@ -7,6 +7,7 @@ import CartContainer from './containers/CartContainer/CartContainer';
 import ItemDetailContainer from './containers/ItemDeatilContainer/ItemDetailContainer';
 import Form from './components/Form/Form';
 import './App.css'
+import Footer from './components/Footer/Footer';
 
 function App() {
   let greeting = 'Bienvenidos a Mitica Amapola'
@@ -23,6 +24,7 @@ function App() {
             <Route path='/form' element={<Form/>}/>
             <Route path='*' element={<Navigate to='/'/>}/>
           </Routes>
+          <Footer/>
       </BrowserRouter>
     </CartContextProvider>   
   )
