@@ -5,12 +5,12 @@ const ItemCount = ({stock=5, initial=1, onAdd}) => { //aca el stock es el de por
     
     const [count, setCount] = useState(initial)
     
-    const handleContadorSuma = ()=>{
+    const handleCounterAdd = ()=>{
         if (count<stock){
             setCount(count + 1)
         }
     }
-    const handleContadorResta = ()=>{
+    const handleCounterMinus = ()=>{
         if (count>initial){
             setCount(count - 1)
         }
@@ -25,8 +25,8 @@ const ItemCount = ({stock=5, initial=1, onAdd}) => { //aca el stock es el de por
                 <label htmlFor="">Seleccione la cantidad: {count}</label>
             </div>
             <div className='card-body cardBodyItemCount'>
-                <button id='mas' className='btn btn-outline-danger'  onClick={handleContadorResta}> - </button>
-                <button id='menos' className='btn btn-outline-primary' onClick={handleContadorSuma}> + </button>
+                <button id='mas' className='btn btn-outline-danger'  onClick={handleCounterMinus}> - </button>
+                <button id='menos' className='btn btn-outline-primary' onClick={handleCounterAdd}> + </button>
             </div>
             <div className='card-footer cardFooterItemCount'>
                 <button className='btn btn-outline-success btn-block' onClick={handleOnAdd}>Agregar al Carrito</button>

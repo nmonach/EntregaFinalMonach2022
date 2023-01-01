@@ -6,15 +6,15 @@
   justify-items: center;
 }
 .image{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 16rem;
-    object-fit: cover;
-    border-radius: .5rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 16rem;
+  object-fit: cover;
+  border-radius: .5rem;
 }
 .cardItem{
   display: grid;
-  width: 300px;
+  width: 350px;
   background: white;
   text-decoration: none;
   color: #444;

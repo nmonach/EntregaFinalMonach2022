@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link, NavLink } from 'react-router-dom';
 import CartWidget from '../CartWidget/CartWidget';
 import Categories from '../Categories/Categories';
+import SocialNetworks from '../SocialNetworks/SocialNetworks';
 import './NavBar.css'
 function NavBar() {
   return (
@@ -15,12 +16,13 @@ function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
             <Categories/>
+            <SocialNetworks />
             <NavLink className='navBarLinks' to="/cart"><CartWidget /></NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  );
+  )
 }
 
 export default NavBar;

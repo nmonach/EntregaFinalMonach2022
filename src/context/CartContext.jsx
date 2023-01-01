@@ -13,7 +13,7 @@ export const CartContextProvider = ({children})=>{
         
         if(idx !== -1){
             cartList[idx].cant += products.cant
-            setCartList([ ... cartList ])
+            setCartList([ ...cartList ])
         }else{
             setCartList([...cartList, products])
         }
@@ -25,6 +25,7 @@ export const CartContextProvider = ({children})=>{
         setCartList([])
     }
 
+
 // precio total
 
     const totalPrice = ()=> cartList.reduce((contador, producto)=> contador += (producto.price * producto.cant), 0)
@@ -32,6 +33,8 @@ export const CartContextProvider = ({children})=>{
 // cantidad total
 
     const totalProducts = ()=> cartList.reduce((contador, producto)=> contador += producto.cant, 0)
+
+
 
 // eliminar por item
 
@@ -54,7 +57,7 @@ export const CartContextProvider = ({children})=>{
         .then(resp => Swal.fire({
             title: "Compra Realizada",
             text: `Su numero de orden es: ${resp.id}`,
-            confirmButtonText: '<a href="/">OK</a>',}))
+            confirmButtonText: '<a href="/">OK</a>' }))
         .catch(err => console.log(err))
         .finally(()=>cleanCart(), )
     }

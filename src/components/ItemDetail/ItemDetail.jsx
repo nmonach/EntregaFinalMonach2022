@@ -19,7 +19,7 @@ const ItemDetail = ({products=[]}) => {
                         <img className='imgItemDetail' src={products.img} />
                     </div>
                     <div className='card-body cardItemDetailBody'>
-                        <h4>Nombre: {products.model}</h4>
+                        <h4>{products.model}</h4>
                         <h4>Categoria: {products.category}</h4>
                     </div>
                     <div className='card-footer cardItemDetailFooter'>
