@@ -88,7 +88,7 @@ export const CartContextProvider = ({children})=>{
             deleteItem,
             addOrder,
             handleOnChange,
-            dataForm,
+            dataForm
         }}>
             {children}
         </CartContext.Provider>
